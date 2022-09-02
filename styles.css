@@ -1,12 +1,21 @@
-body {
+main, header, footer {
     display: flex;
     justify-content: center;
     align-content: center;
 }
 
+
+
 .container {
-    display: grid;
-    height: 260px;
-    width: 260px;
+    display: flex;
+    flex-wrap: wrap;
+    aspect-ratio : 1 / 1;
     border: solid 2px black;
+    margin-bottom: 1.5em;
+}
+
+.grid-element {
+    border: solid 1px black;
+    aspect-ratio : 1 / 1;
+    margin: 1px;
 }
