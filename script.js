@@ -20,9 +20,9 @@ createGrid(sideQuantity);
 
 
 function resizeGrid(e) {
-    console.log(e.target.value);
-    sideQuantity = e.target.value;
 
+    sideQuantity = e.target.value;
+    
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
@@ -41,7 +41,7 @@ function resizeGrid(e) {
 let mouseHover = container.addEventListener('mouseover', paintBox)
 
 function paintBox(e) {
-    console.log(e)
+    
     if (e.target.className === 'grid-element' && e.ctrlKey === false) {
         let selectedBox = e.target;
         selectedBox.style.backgroundColor = 'grey';
@@ -50,8 +50,15 @@ function paintBox(e) {
         //console.log(gridElement)
 }
 
-let resetButton = footer.querySelector('.reset-button')
-    resetButton.addEventListener('click', () => {
-        e.preventDefault();
-        /* insert background for each grid box function */
-    })
+let footer = document.querySelector('footer');
+let resetButton = footer.querySelector('#reset-grid')
+    resetButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(e);
+
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+    
+    createGrid(sideQuantity);
+    });
