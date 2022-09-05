@@ -10,12 +10,19 @@ main, header, footer {
     display: flex;
     flex-wrap: wrap;
     aspect-ratio : 1 / 1;
-    border: solid 2px black;
     margin-bottom: 1.5em;
 }
 
 .grid-element {
-    border: solid 0.5px rgb(184, 184, 184);
     aspect-ratio : 1 / 1;
-   /*  margin: 1px; */
+    border: solid 0.25px rgb(189, 221, 237);
+}
+
+#reset-grid {
+    margin-left: 10px;
+}
+
+.paint-mode, .grid-size {
+    display: block;
+    margin: auto;
 }
