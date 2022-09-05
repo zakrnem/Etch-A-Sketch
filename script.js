@@ -69,7 +69,10 @@ let mouseHover = container.addEventListener('mouseover', paintBox)
     }
 
     function rgb(selectedBox) {
-        console.log('Random RGB Mode Selected');
+        let redColor = Math.floor(Math.random() * 255);
+        let greenColor = Math.floor(Math.random() * 255);
+        let blueColor = Math.floor(Math.random() * 255);
+        selectedBox.style.backgroundColor = `rgb(${redColor},${greenColor},${blueColor})`;
     }
 
 let resetButton = document.querySelector('#reset-grid')
