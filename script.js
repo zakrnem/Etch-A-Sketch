@@ -32,23 +32,44 @@ createGrid(sideQuantity);
     }
 
 let mouseHover = container.addEventListener('mouseover', paintBox)
-    function paintBox(e) {
-        if (e.target.className === 'grid-element' && e.ctrlKey === false) {
-            let selectedBox = e.target;
-            let boxColor;
 
-            if(selectedBox.id !=='paintedBox') {
-                boxColor = 190;
-                selectedBox.style.backgroundColor = `rgb(${boxColor},${boxColor},${boxColor}`;
+    function paintBox(e) {
+        let selectedBox = e.target;
+        if (selectedBox.className === 'grid-element' && e.ctrlKey === false) {
+            switch(true) {
+                case (selectedMode === 'progressive-grey'):
+                    progressiveGrey(selectedBox);
+                    break;
+                case (selectedMode === 'black&white'):
+                    blackWhite(selectedBox);
+                    break;
+                case (selectedMode === 'rgb'):
+                    rgb(selectedBox);
+                    break;
             }
-            else if (selectedBox.id === 'paintedBox' && parseInt(selectedBox.getAttribute('value'))>1) {
-                boxColor = parseInt(selectedBox.getAttribute('value'));
-                boxColor = boxColor-21;
-                selectedBox.style.backgroundColor = `rgb(${boxColor},${boxColor},${boxColor}`;
-            }
-            selectedBox.setAttribute("id", "paintedBox");
-            selectedBox.setAttribute("value", `${boxColor}`);
         }
+    }
+
+    function progressiveGrey(selectedBox) {
+        if(selectedBox.id !=='paintedBox') {
+            boxColor = 190;
+            selectedBox.style.backgroundColor = `rgb(${boxColor},${boxColor},${boxColor}`;
+        }
+        else if (selectedBox.id === 'paintedBox' && parseInt(selectedBox.getAttribute('value'))>1) {
+            boxColor = parseInt(selectedBox.getAttribute('value'));
+            boxColor = boxColor-21;
+            selectedBox.style.backgroundColor = `rgb(${boxColor},${boxColor},${boxColor}`;
+        }
+        selectedBox.setAttribute("id", "paintedBox");
+        selectedBox.setAttribute("value", `${boxColor}`);    
+    }
+
+    function blackWhite(selectedBox) {
+        selectedBox.style.backgroundColor = 'grey';
+    }
+
+    function rgb(selectedBox) {
+        console.log('Random RGB Mode Selected');
     }
 
 let resetButton = document.querySelector('#reset-grid')
